@@ -42,14 +42,13 @@ describe('TeamOverview', () => {
             location: '',
             avatar: '',
         };
-        jest.spyOn(API, 'getTeamOverview').mockImplementationOnce(() => Promise.resolve({} as any));
-        jest.spyOn(API, 'getUserData').mockImplementationOnce(() => Promise.resolve({} as any));
+        jest.spyOn(API, 'getTeamOverview').mockResolvedValue(teamOverview);
+        jest.spyOn(API, 'getUserData').mockResolvedValue(userData);
 
         render(<TeamOverview />);
 
         await waitFor(() => {
-            console.log(screen.queryAllByText('userData'))
-            expect(screen.queryAllByText('userData')).toHaveLength(3);
+            expect(screen.queryAllByText('userData')).toHaveLength(4);
         });
     });
 });
