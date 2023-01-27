@@ -4,8 +4,8 @@ import TeamOverview from './pages/TeamOverview';
 import Teams from './pages/Teams';
 import UserOverview from './pages/UserOverview';
 
-const App = () => {
-    var router = createBrowserRouter([
+function App () {
+    const router = createBrowserRouter([
         {
             path: '/',
             element: <Teams />,
@@ -20,6 +20,6 @@ const App = () => {
         },
     ]);
     return <RouterProvider router={router} />;
-};
+}
 
 export default App;

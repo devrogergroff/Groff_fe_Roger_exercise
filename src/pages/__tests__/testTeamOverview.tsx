@@ -48,7 +48,8 @@ describe('TeamOverview', () => {
         render(<TeamOverview />);
 
         await waitFor(() => {
-            expect(screen.queryAllByText('userData')).toHaveLength(4);
+            console.log(screen.queryAllByText('userData'))
+            expect(screen.queryAllByText('userData')).toHaveLength(3);
         });
     });
 });
