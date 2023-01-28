@@ -26,13 +26,17 @@ export default function Search({items, filterItems}:Props) {
                 return false;            
             } );
            filterItems(itemsFiltered); 
-            console.log(`TESTE ${searchString}`, itemsFiltered);
         }
       
       
       }, [searchString]);
-      
-      console.log('items',items);
+    return (
 
-    return (<input value={searchString} onChange={handleChange} />);
+        <div className="flex items-center mt-8">   
+            <div className="relative w-full">
+                <input value={searchString} onChange={handleChange} type="search" id="default-search" className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search heare..." required />
+            </div>
+        </div>
+      
+    ); 
 }
