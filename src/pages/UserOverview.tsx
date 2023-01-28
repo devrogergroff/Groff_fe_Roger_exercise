@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {useLocation} from 'react-router-dom';
 import {UserData} from 'types';
 import Card from '../components/Card';
@@ -21,9 +21,9 @@ function mapU (user: UserData) {
         },
     ];
     return <Card columns={columns} hasNavigation={false} navigationProps={user} />;
-};
+}
 
-const UserOverview = () => {
+function UserOverview () {
     const location = useLocation();
     return (
         <Container>
@@ -33,6 +33,6 @@ const UserOverview = () => {
             {mapU(location.state)}
         </Container>
     );
-};
+}
 
 export default UserOverview;

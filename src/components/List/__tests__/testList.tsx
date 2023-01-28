@@ -12,6 +12,7 @@ describe('List', () => {
         const items = [
             {
                 id: '1',
+                name: 'columnValue1',
                 columns: [
                     {
                         key: 'columnKey1',
@@ -30,6 +31,7 @@ describe('List', () => {
         const items = [
             {
                 id: '1',
+                name:'columnValue1',
                 columns: [
                     {
                         key: 'columnKey1',
@@ -48,6 +50,7 @@ describe('List', () => {
         const items = [
             {
                 id: '1',
+                name:'name1',
                 columns: [
                     {
                         key: 'columnKey1',
@@ -57,6 +60,7 @@ describe('List', () => {
             },
             {
                 id: '2',
+                name:'name2',
                 columns: [
                     {
                         key: 'columnKey2',

@@ -36,6 +36,7 @@ describe('TeamOverview', () => {
         };
         const userData = {
             id: '2',
+            name:'user',
             firstName: 'userData',
             lastName: 'userData',
             displayName: 'userData',

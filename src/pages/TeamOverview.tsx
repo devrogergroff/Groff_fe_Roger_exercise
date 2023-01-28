@@ -1,4 +1,5 @@
-import  React  from 'react';
+import Search from 'components/Search';
+import  React, {useEffect,useState}  from 'react';
 import {useLocation, useParams} from 'react-router-dom';
 import {ListItem, UserData} from 'types';
 import {getTeamOverview, getUserData} from '../api';
@@ -27,6 +28,7 @@ function mapArray(users: UserData[]) {
             id: u.id,
             url: `/user/${u.id}`,
             columns,
+            name: `${u.firstName} ${u.lastName}`,
             navigationProps: u,
         };
     }) as ListItem[];
@@ -54,31 +56,25 @@ function mapTLead (tlead)  {
     return <Card columns={columns} url={`/user/${tlead.id}`} navigationProps={tlead} />;
 }
 
-interface PageState {
-    teamLead?: UserData;
-    teamMembers?: UserData[];
-}
-
 function TeamOverview () {
     const location = useLocation();
     const {teamId} = useParams();
-    const [pageData, setPageData] = React.useState<PageState>({});
-    const [isLoading, setIsLoading] = React.useState<boolean>(true);
+    const [teamLead, setTeamLead] = useState<UserData>();
+    const [teamMembers, setTeamMembers] = useState<UserData[]>([]);
+    const [teamMembersFiltered, setTeamMembersFiltered] = React.useState<UserData[]>();
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
-    React.useEffect(() => {
+   useEffect(() => {
         async function getTeamUsers() {
             const {teamLeadId, teamMemberIds = []} = await getTeamOverview(teamId);
-            const teamLead = await getUserData(teamLeadId);
-
-            const teamMembers = [];
+            setTeamLead(await getUserData(teamLeadId));
+            const teamMembersAux = [];
             for(const teamMemberId of teamMemberIds) {
                 const data = await getUserData(teamMemberId);
-                teamMembers.push(data);
+                data.name = `${data.firstName} ${data.lastName}`;
+                teamMembersAux.push(data);
             }
-            setPageData({
-                teamLead,
-                teamMembers,
-            });
+            setTeamMembers(teamMembersAux);
             setIsLoading(false);
         }
         getTeamUsers();
@@ -87,8 +83,9 @@ function TeamOverview () {
     return (
         <Container>
             <Header title={`Team ${location.state.name}`} />
-            {!isLoading && mapTLead(pageData.teamLead)}
-            <List items={mapArray(pageData?.teamMembers ?? [])} isLoading={isLoading} />
+            {!isLoading && mapTLead(teamLead)}
+            <Search items={teamMembers} filterItems={setTeamMembersFiltered} />
+            <List items={teamMembersFiltered?mapArray(teamMembersFiltered): mapArray(teamMembers)} isLoading={isLoading} />
         </Container>
     );
 }

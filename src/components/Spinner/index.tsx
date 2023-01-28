@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import styled, {keyframes} from 'styled-components';
 
 const spinnerAnimation = keyframes`
@@ -19,6 +19,6 @@ const SpinnerBody = styled.div`
     animation: ${spinnerAnimation} 800ms linear infinite;
 `;
 
-export const Spinner = () => {
+export function Spinner () {
     return <SpinnerBody data-testid="spinner" />;
-};
+}

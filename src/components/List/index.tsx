@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import {ListItem} from 'types';
 import Card from '../Card';
 import {Spinner} from '../Spinner';
@@ -10,7 +10,7 @@ interface Props {
     isLoading: boolean;
 }
 
-const List = ({items, hasNavigation = true, isLoading}: Props) => {
+function List ({items, hasNavigation = true, isLoading}: Props) {
     return (
         <Container>
             {isLoading && <Spinner />}
@@ -29,6 +29,6 @@ const List = ({items, hasNavigation = true, isLoading}: Props) => {
                 })}
         </Container>
     );
-};
+}
 
 export default List;
