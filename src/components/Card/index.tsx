@@ -24,12 +24,14 @@ function Card ({id,columns,url,hasNavigation = true,navigationProps=null}: Props
 
     };
     return (
-        <div className="flex justify-center p-5 cursor-pointer" onClick={handleClick}>
+        <div className="flex justify-center p-5 cursor-pointer" onClick={handleClick}  data-testid={`cardContainer-${id}`}>
             <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
                 <img className=" w-full h-96 md:h-auto object-cover md:w-2/5 rounded-t-lg md:rounded-none md:rounded-l-lg" src="/teams.svg" alt="" />
                 <div className="p-6 flex flex-col justify-start ">
                 <h5 className="text-gray-900 text-xl font-medium mb-2">{columns.map(({key: columnKey, value}) => (               
-                        <p>{value}</p>            
+                      <p key={columnKey}>
+                      <strong>{columnKey}</strong>&nbsp;{value}
+                  </p>    
                     ))}</h5>
                 </div>
             </div>
