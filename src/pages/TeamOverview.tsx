@@ -30,7 +30,7 @@ function mapArray(users: UserData[]) {
             navigationProps: u,
         };
     }) as ListItem[];
-};
+}
 
 function mapTLead (tlead)  {
     const columns = [
@@ -52,7 +52,7 @@ function mapTLead (tlead)  {
         },
     ];
     return <Card columns={columns} url={`/user/${tlead.id}`} navigationProps={tlead} />;
-};
+}
 
 interface PageState {
     teamLead?: UserData;
@@ -80,7 +80,7 @@ const TeamOverview = () => {
                 teamMembers,
             });
             setIsLoading(false);
-        };
+        }
         getTeamUsers();
     }, [teamId]);
 
