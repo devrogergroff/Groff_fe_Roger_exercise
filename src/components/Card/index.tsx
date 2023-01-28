@@ -13,16 +13,8 @@ interface Props {
     hasNavigation?: boolean;
     navigationProps?: UserData | Teams;
 }
-
-const Card = ({
-    id,
-    columns,
-    url,
-    hasNavigation = true,
-    navigationProps = null,
-}: Props): JSX.Element => {
+function Card ({id,columns,url,hasNavigation = true,navigationProps=null}: Props) {
     const navigate = useNavigate();
-
     return (
         <Container
             data-testid={`cardContainer-${id}`}
@@ -43,6 +35,5 @@ const Card = ({
             ))}
         </Container>
     );
-};
-
+}
 export default Card;

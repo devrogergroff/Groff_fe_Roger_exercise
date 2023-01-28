@@ -20,9 +20,9 @@ function MapT (teams: TeamsList[]) {
             navigationProps: team,
         } as ListItem;
     });
-};
+}
 
-const Teams = () => {
+function Teams () {
     const [teams, setTeams] = React.useState<any>([]);
     const [isLoading, setIsLoading] = React.useState<any>(true);
 
@@ -41,6 +41,6 @@ const Teams = () => {
             <List items={MapT(teams)} isLoading={isLoading} />
         </Container>
     );
-};
+}
 
 export default Teams;
