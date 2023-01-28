@@ -59,7 +59,7 @@ interface PageState {
     teamMembers?: UserData[];
 }
 
-const TeamOverview = () => {
+function TeamOverview () {
     const location = useLocation();
     const {teamId} = useParams();
     const [pageData, setPageData] = React.useState<PageState>({});
@@ -91,6 +91,6 @@ const TeamOverview = () => {
             <List items={mapArray(pageData?.teamMembers ?? [])} isLoading={isLoading} />
         </Container>
     );
-};
+}
 
 export default TeamOverview;
