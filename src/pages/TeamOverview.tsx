@@ -1,4 +1,4 @@
-import * as React from 'react';
+import  React  from 'react';
 import {useLocation, useParams} from 'react-router-dom';
 import {ListItem, UserData} from 'types';
 import {getTeamOverview, getUserData} from '../api';
