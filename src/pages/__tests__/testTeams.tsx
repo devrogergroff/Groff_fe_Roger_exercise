@@ -1,3 +1,4 @@
+/* eslint-disable jest/no-conditional-expect */
 import * as React from 'react';
 import {fireEvent, render, screen, waitFor, act} from '@testing-library/react';
 import * as API from '../../api';
@@ -10,6 +11,7 @@ jest.mock('react-router-dom', () => ({
             lastName: 'User',
             displayName: 'userName',
             location: 'location',
+            isLoading: true,
         },
     }),
     useNavigate: () => ({}),
@@ -29,9 +31,23 @@ describe('Teams', () => {
     });
 
     it('should render spinner while loading', async () => {
-        // TODO - Add code for this test
+        const promise = Promise.resolve();
+        jest.spyOn(API, 'getTeams').mockResolvedValue([
+            {
+                id: '1',
+                name: 'Team1',
+            },
+            {
+                id: '2',
+                name: 'Team2',
+            },
+        ]);
+        render(<Teams />);
+        expect(screen.getByTestId('spinner')).toBeInTheDocument();
+        await act(async () => {
+            await promise;
+        });
     });
-
     it('should render teams list', async () => {
         jest.spyOn(API, 'getTeams').mockResolvedValue([
             {
@@ -52,3 +68,4 @@ describe('Teams', () => {
         expect(screen.getByText('Team2')).toBeInTheDocument();
     });
 });
+

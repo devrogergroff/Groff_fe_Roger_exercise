@@ -68,9 +68,9 @@
     "jest": true,
     "browser": true
   },
-  "plugins": ["react", "no-only-tests", "react-hooks", "testing-library", "jest", "no-storage"],
+  "plugins": ["react", "no-only-tests", "react-hooks", "testing-library", "jest", "no-storage","tailwindcss"],
   "rules": {
-    "linebreak-style": ["error", "unix"],
+    "linebreak-style": 0,
     "quotes": ["error", "single"],
     "semi": ["error", "always"],
     "arrow-body-style": 0,
@@ -79,6 +79,9 @@
     "class-methods-use-this": 0,
     "no-bitwise": 0,
     "default-param-last": 0,
+    "tailwindcss/classnames-order": "warn",
+    "tailwindcss/no-custom-classname": "warn",
+    "tailwindcss/no-contradicting-classname": "error",
     "comma-dangle": [
       "error",
       {

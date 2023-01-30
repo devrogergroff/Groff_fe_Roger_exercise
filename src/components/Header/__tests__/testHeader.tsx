@@ -24,7 +24,6 @@ describe('Header', () => {
 
     it('should render header', () => {
         render(<Header title="Header" />);
-
         expect(screen.getByText('Header')).toBeInTheDocument();
     });
 
