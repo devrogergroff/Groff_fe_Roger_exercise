@@ -39,11 +39,14 @@ function Teams () {
     }, []);
 
     return (
-        <Container>
-            <Header title="Teams" showBackButton={false} />
+        <>
+         <Header title="Teams" showBackButton={false} />
+        <Container>          
             <Search items={teams} filterItems={setTeamsFiltered} />
             <List items={teamsFiltered?MapT(teamsFiltered):MapT(teams)} isLoading={isLoading} />
         </Container>
+        </>
+       
     );
 }
 

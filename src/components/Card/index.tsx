@@ -15,27 +15,30 @@ interface Props {
 function Card ({id,columns,url,hasNavigation = true,navigationProps=null}: Props) {
     const navigate = useNavigate();
     const handleClick = (e) => {
-        if (hasNavigation) {
+        e.preventDefault();
+        if(hasNavigation) {
             navigate(url, {
                 state: navigationProps,
-            });
-        }
-        e.preventDefault();
-
+            }); 
+        }      
     };
     return (
-        <div className="flex justify-center p-5 cursor-pointer" onClick={handleClick}  data-testid={`cardContainer-${id}`}>
-            <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
-                <img className=" w-full h-96 md:h-auto object-cover md:w-2/5 rounded-t-lg md:rounded-none md:rounded-l-lg" src="/teams.svg" alt="" />
-                <div className="p-6 flex flex-col justify-start ">
-                <h5 className="text-gray-900 text-xl font-medium mb-2">{columns.map(({key: columnKey, value}) => (               
-                      <p key={columnKey}>
-                      <strong>{columnKey}</strong>&nbsp;{value}
-                  </p>    
-                    ))}</h5>
-                </div>
+
+        <div className="w-full max-w-sm p-5 bg-white border border-gray-200 rounded-lg shadow"   data-testid={`cardContainer-${id}`} onClick={handleClick}>
+
+            <div className="flex flex-col items-center pb-10">
+                <img className="w-24 h-24 mb-3 rounded-full shadow-lg" src="/teams.svg" alt='' />
+                <h5 className="mb-1 text-xl font-medium text-gray-900">{columns.map(({key: columnKey, value}) => (               
+                            <p key={columnKey}>
+                            <strong>{columnKey}</strong>&nbsp;{value}
+                        </p>    
+                            ))}</h5>
+                {hasNavigation? (<div className="flex mt-4 space-x-3 md:mt-6">
+                    <a href="#" className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300" onClick={handleClick}>More details</a>
+                </div>) :''}
+              
             </div>
-        </div>
+        </div>       
     );
       
 }

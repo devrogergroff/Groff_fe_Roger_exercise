@@ -20,5 +20,6 @@ const SpinnerBody = styled.div`
 `;
 
 export function Spinner () {
-    return <SpinnerBody data-testid="spinner" />;
+    return (
+    <SpinnerBody data-testid="spinner" />);
 }

@@ -26,12 +26,13 @@ function mapU (user: UserData) {
 function UserOverview () {
     const location = useLocation();
     return (
-        <Container>
-            <Header
-                title={`User ${location.state.firstName} ${location.state.lastName}`}
-            />
+        <>
+        <Header title={`User ${location.state.firstName} ${location.state.lastName}`}/>
+        <Container>           
             {mapU(location.state)}
         </Container>
+        </>
+      
     );
 }
 

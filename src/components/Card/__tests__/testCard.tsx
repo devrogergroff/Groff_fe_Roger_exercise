@@ -20,7 +20,7 @@ describe('Card', () => {
     });
 
     it('should render card with multiple columns', () => {
-        var columns = [
+        const columns = [
             {key: 'columnKey1', value: 'columnValue1'},
             {key: 'columnKey2', value: 'columnValue2'},
             {key: 'columnKey3', value: 'columnValue3'},

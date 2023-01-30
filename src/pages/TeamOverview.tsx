@@ -81,12 +81,16 @@ function TeamOverview () {
     }, [teamId]);
 
     return (
-        <Container>
-            <Header title={`Team ${location.state.name}`} />
-            {!isLoading && mapTLead(teamLead)}
-            <Search items={teamMembers} filterItems={setTeamMembersFiltered} />
-            <List items={teamMembersFiltered?mapArray(teamMembersFiltered): mapArray(teamMembers)} isLoading={isLoading} />
-        </Container>
+        <>
+         <Header title={`Team ${location.state.name}`} />
+         <Container>
+           
+           {!isLoading && mapTLead(teamLead)}
+           <Search items={teamMembers} filterItems={setTeamMembersFiltered} />
+           <List items={teamMembersFiltered?mapArray(teamMembersFiltered): mapArray(teamMembers)} isLoading={isLoading} />
+       </Container>
+        </>
+      
     );
 }
 
